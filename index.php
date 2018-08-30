@@ -17,21 +17,24 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
       <link rel="stylesheet" type="text/css" media="all" href="css/myQRCss.css">
-      <script src="qr_core.js"></script><!--  Core Random JS-->
-	  
+      <script src="js/qr_core_generate.js"></script><!--  Core QR create JS-->
+	  <script src="js/qr_scanner.js"></script><!--  Core QR read/scan JS-->
 	  
 	
 	  
 	  <meta name="viewport" content="width=device-width" />
+	  
+	  <!--Favicon-->
+      <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
      </head>
 
      <body>
 
-       <div id="headX" class="jumbotron text-center gradient alert-success" style =' background-color:lavender ;'> <!--#2ba6cb;-->
+       <div id="headX" class="jumbotron text-center gradient alert-success my-background" style =' background-color:lavender ;'> <!--#2ba6cb;-->
          <h1 id="h1Text"> <span id="textChange"> QR Codes on-line</span> <span class="glyphicon glyphicon-paste"><!--</span> <img src="http://78.media.tumblr.com/tumblr_m2hq5tt3ma1qav3uso1_400.gif" style="width:3%"/>--> </h1> 
 		   
-           <p class="header_p">QR Codes on-line processor  <!--generates random lists, ramdomizes integers, etc--> <span class="glyphicon glyphicon-duplicate"></span>
+           <!--<p class="header_p">QR Codes on-line processor   <span class="glyphicon glyphicon-duplicate"></span>-->    <!--generates random lists, ramdomizes integers, etc-->
            </p>
 		   <!--<p class="language"><a href="/eng">ENG</a></p>-->
 		   
@@ -42,7 +45,8 @@
        
          <div class="wrapper grey">
     	   <div class="container">
-		      <div class="col-sm-4 col-xs-12" style="background-color:lavender;">
+		     <div class="row">
+		      <div class="col-sm-4 col-xs-12 my-background" style="background-color:lavender;">
 			  
 			  
              
@@ -100,7 +104,7 @@
 				echo '</center></div>';
                 // END  GENERATING QR--------------------------------------------------------------------------------------
                 ?>
-
+                </div>	<!-- end class="row"-->	
 				 
 				 
 				 
@@ -111,9 +115,44 @@
 				 
 				 
 				 
-				 
+				 <!--------------------------------------QR READER/Scan FORM PART---------------------------------------->
+				 <br>
+				 <div class="row">
+				 <div class="col-sm-3 col-xs-12 my-background" id="qrScanForm">
+				    <form enctype="multipart/form-data" action="" method="POST" id="formImg"> <!-- http://api.qrserver.com/v1/read-qr-code/-->
+                       <!-- MAX_FILE_SIZE (maximum file size in bytes) must precede the file input field used to upload the QR code image -->
+                       <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+                       <!-- The "name" of the input field has to be "file" as it is the name of the POST parameter -->
+                       Choose QR code image to scan: 
+					   <input name="file" type="file" id="imgLoaded" required /><br>
+					   
+                       <input type="submit" value="Read QR code" class="btn btn-default" id="qrScanButton"/>
+					   <!--<button type="button" class="btn btn-default" id="qrScanButton">Read QR code</button>-->
+					   
+                    </form> 
+		        </div>	
+                </div>	<!-- end class="row"-->			
+				<!----------------------------------END QR READER FORM PART---------------------------------------------->
+				
+				
+				
+				
+				
+				<!--------------------------------------QR READER/Scan RESULT DIV---------------------------------------->
+				<div class="col-sm-12 col-xs-12 " id="qrScanResult">
+				</div>		 
+				<!----------------------------------END QR READER/Scan RESULT DIV---------------------------------------->
                                     
-     
+                <div class="col-sm-12 col-xs-12 " id="preview">
+				</div>
+				
+				 <div class="col-sm-12 col-xs-12 " id="err">
+				</div>
+	 
+	 
+	 
+	 
+	 
     			</div><!-- /.container -->	
 				  		
     		</div><!-- /.wrapper -->
