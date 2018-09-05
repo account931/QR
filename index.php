@@ -18,7 +18,12 @@
 
       <link rel="stylesheet" type="text/css" media="all" href="css/myQRCss.css">
       <script src="js/qr_core_generate.js"></script><!--  Core QR create JS-->
-	  <script src="js/qr_scanner.js"></script><!--  Core QR read/scan JS-->
+	  <script src="js/qr_scanner.js"></script><!--  Core QR read/scan JS --- NOT USED- SO FAR IT IS NOT USED AT ALL-> it is delegated to Library/JS_Lib_toScan_QR--> 
+	  <script src="js/js_controls.js"></script><!-- js_controlsn (hides/show el)--> 
+	  
+	  
+	  <script type="text/javascript" src="Library/JS_Lib_toScan_QR/webqr.js"></script>    <!--   QR read/scan Library--> <!-- Injected for Scan/Read-->
+	  <script type="text/javascript" src="Library/JS_Lib_toScan_QR/llqrcode.js"></script> <!--   QR read/scan Library--> <!-- Injected for Scan/Read-->
 	  
 	
 	  
@@ -29,7 +34,7 @@
 
      </head>
 
-     <body>
+     <body  onload="load(); setimg();">  <!-- Injected for Scan/Read-->
 
        <div id="headX" class="jumbotron text-center gradient alert-success my-background" style =' background-color:lavender ;'> <!--#2ba6cb;-->
          <h1 id="h1Text"> <span id="textChange"> QR Codes on-line</span> <span class="glyphicon glyphicon-paste"><!--</span> <img src="http://78.media.tumblr.com/tumblr_m2hq5tt3ma1qav3uso1_400.gif" style="width:3%"/>--> </h1> 
@@ -46,11 +51,17 @@
          <div class="wrapper grey">
     	   <div class="container">
 		     <div class="row">
-		      <div class="col-sm-4 col-xs-12 my-background" style="background-color:lavender;">
+			 
+			 <!-------CHECKBOX to change generate/scan-->
+			 <div class=" col-sm-12 col-xs-12 my-background checkbox"> <!-- Checkbox ID will be used in JS to form div ids (randListDiv,etc) -->
+               <label><input type="checkbox" value="" name="r" id="qrGenerate" checked >Generate QR<!--Random list--></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			   <label><input type="checkbox" value="" name="r" id="qrScan">Scan QR<!--Random int--></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             </div>
+			  <!---- END CHECKBOX to change generate/scan-->
 			  
-			  
-             
-		           <!--------Form Start------>	
+			 
+		      <div class="col-sm-4 col-xs-12 my-background" style="background-color:lavender;" id="qrGenerDiv">
+		           <!-------------- GENERATE Form Start------------->	
                    <form action="" id="myFormZ" method="post">
                       <div class="form-group">
                           <label for="email">Your text to QR: <span class="glyphicon glyphicon-transfer"></span></label>
@@ -68,22 +79,21 @@
                    <button type="submit" class="btn btn-default" id="submit">Submit</button>
 				   <button type="button" class="btn btn-default" id="clear">Clear</button>
                    </form>				   
-                   <!---------END Form -------->				   
+                   <!---------------- END GENERATE  Form -------->				   
 				  
 				   
-				 </div> <!--END <div class="col-sm-4" style="background-color:lavender;">-->
+			 </div> <!--END <div class="col-sm-4" style="background-color:lavender;">-->
 				
 				 
 				  <!--<div class="col-sm-1 col-xs-1" "></div>-->
 				 
 				 
 				 
-				 
-				 <?php
+				 <!--------- Start DIV to display QR Generate -------->
+				 <div class="row" id="qrResultRow">
+				 <div class="col-sm-4 col-xs-12" id="qrResult"><center>
+	             <?php
                 // START GENERATING QR**********************************************************************************
-				echo '<div class="col-sm-4 col-xs-12" id="qrResult"><center>';
-				
-	
                 if( isset($_POST['qr']) && $_POST['qr']!=''){ //if issert and the value not NULL, it helps to avoid proccess on page reload
                     $text = $_POST["qr"];//your input
                     $textR = str_replace(' ', '+', $text);  //  replace  all  blankspaces  with "+" as with  blankspaces it proceedes only  the  1  st word;
@@ -92,7 +102,7 @@
 	 
 	              
                    echo '<div class="alert alert-success"><p id="qrCode">Your  QR Code with text <span class="red">' . $text . '</span> has been created</p></div>'; //bootsrap class= alert-success
-                   echo '<span class="badge "><img src='.$url.' /></span>'; // BStrap Class badge to make a frame
+                   echo '<div><span class="badge "><img src='.$url.' /></span></div>'; // BStrap Class badge to make a frame
                    
 				    
 					unset ($text);
@@ -101,10 +111,12 @@
   
                 } //End isset($_POST['QRSend'])
 				
-				echo '</center></div>';
+				echo '</center>';  //</div>
                 // END  GENERATING QR--------------------------------------------------------------------------------------
                 ?>
-                </div>	<!-- end class="row"-->	
+				</div>
+                </div><!-- end class="row"-->	
+				<!--------- END  DIV to display QR Generate -------->
 				 
 				 
 				 
@@ -114,40 +126,40 @@
 				 
 				 
 				 
-				 
-				 <!--------------------------------------QR READER/Scan FORM PART---------------------------------------->
+			<!--  Form Was cut here--->
+				
+				
+				
+				
+				
+				
+				
+				
+				<!-------------------------------------------------- Injected for Scan/Read----------------------------------------------->
 				 <br>
-				 <div class="row">
-				 <div class="col-sm-3 col-xs-12 my-background" id="qrScanForm">
-				    <form enctype="multipart/form-data" action="" method="POST" id="formImg"> <!-- http://api.qrserver.com/v1/read-qr-code/-->
-                       <!-- MAX_FILE_SIZE (maximum file size in bytes) must precede the file input field used to upload the QR code image -->
-                       <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                       <!-- The "name" of the input field has to be "file" as it is the name of the POST parameter -->
-                       Choose QR code image to scan: 
-					   <input name="file" type="file" id="imgLoaded" required /><br>
-					   
-                       <input type="submit" value="Read QR code" class="btn btn-default" id="qrScanButton"/>
-					   <!--<button type="button" class="btn btn-default" id="qrScanButton">Read QR code</button>-->
-					   
-                    </form> 
-		        </div>	
-                </div>	<!-- end class="row"-->			
-				<!----------------------------------END QR READER FORM PART---------------------------------------------->
+				 <div class="row" id="qrScanDiv" style="display:none;">
+				 <div class="col-sm-4 col-xs-12 my-background" id="qrscanner">
+				 
+				 <!----Provided by library-->
+				 <div id="main">
+                    <div id="mainbody">
+                        <div id="outdiv">
+                        </div>
+						
+                   <div id="result"></div>
+                   </div></div>         
+                   <canvas id="qr-canvas" width="" height="10px;"></canvas> <!--Canvas to draw image -->
+				   <!----Provided by library-->
+				   
+				   </div>
+				   </div>
+		<!-------------------------------------------------- Injected for Scan/Read----------------------------------------------->		
 				
 				
 				
 				
 				
-				<!--------------------------------------QR READER/Scan RESULT DIV---------------------------------------->
-				<div class="col-sm-12 col-xs-12 " id="qrScanResult">
-				</div>		 
-				<!----------------------------------END QR READER/Scan RESULT DIV---------------------------------------->
-                                    
-                <div class="col-sm-12 col-xs-12 " id="preview">
-				</div>
 				
-				 <div class="col-sm-12 col-xs-12 " id="err">
-				</div>
 	 
 	 
 	 

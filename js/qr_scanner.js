@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+	// SO FAR IT IS NOT USED AT ALL-> it is delegated to Library/JS_Lib_toScan_QR
 	
 	
 	// Click to send ajax QR Scan / Read the image
@@ -11,41 +11,39 @@ $(document).ready(function(){
     */
 
 
-	
+  // onClick form submit
   $("#formImg").on('submit',(function(e) {
-  e.preventDefault();
-  alert(new FormData(this));
-  $.ajax({
+      e.preventDefault();
+      alert(new FormData(this));
+      $.ajax({
          url: "ajax_php/ajax_QR_Scan_handler.php",
-   type: "POST",
-   data:  new FormData(this),
-   contentType: false,
-         cache: false,
-   processData:false,
-   beforeSend : function()
-   {
-    //$("#preview").fadeOut();
-    $("#err").fadeOut();
-   },
-   success: function(data)
-      {
-    if(data=='invalid')
-    {
-     // invalid file format.
-     $("#err").html("Invalid File !").fadeIn();
-    }
-    else
-    {
-     // view uploaded file.
-     $("#preview").html(data).fadeIn();
-     $("#formImg")[0].reset(); 
-    }
-      },
-     error: function(e) 
-      {
-    $("#err").html(e).fadeIn();
-      }          
-    });
+         type: "POST",
+         data: form.serialize(), // new FormData(this),
+         //contentType: false,
+         //cache: false,
+         //processData:false,
+         beforeSend : function()
+        {
+            //$("#preview").fadeOut();
+            $("#err").fadeOut();
+        },
+        success: function(data)
+        {
+            if(data=='invalid')
+            {
+            // invalid file format.
+            $("#err").html("Invalid File !").fadeIn();
+            } else {
+                // view uploaded file.
+                $("#preview").html(data).fadeIn();
+                $("#formImg")[0].reset(); 
+             }
+         },
+       error: function(e) 
+       {
+           $("#err").html(e).fadeIn();
+       }          
+     });
  }));
  
  
@@ -60,7 +58,7 @@ $(document).ready(function(){
 	
 	
 	
-		// getHistoricalPeriodResult
+     //  NOT USED
 	// **************************************************************************************
     // **************************************************************************************
     //                                                                                     **
