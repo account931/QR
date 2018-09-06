@@ -1,21 +1,20 @@
 $(document).ready(function(){
-	
-// On CheckBox change
-    $('input[type="checkbox"]').on('change', function() {
-	 
-	 var id = this.id;
-	 //alert(id);
-	 if(id =='qrScan'){
-		 $("#qrGenerDiv, #qrResultRow").hide(800);  
-		 //$("#qrResultRow").hide(800);  
-		 $("#qrScanDiv").show(800); 
-	 } else {
-		 $("#qrScanDiv").hide(800);
-	     $("#qrGenerDiv").show(800);   
-	 }
 
-	});
 	
+     // On CheckBox change
+    // **************************************************************************************
+    // **************************************************************************************
+    //                                                                                     ** 
+    $('input[type="checkbox"]').on('change', function() {
+	     var passedID = this.id;
+	     //alert(passedID);
+	 
+	     $(".coreDivs-toHide").hide(800);  //hide all divs with class="coreDivs"
+	     $("#" + passedID + "Div").show(2000); // show a div that matches checkbox ID + "Div" (i.e qrScanDivDiv, qrGenerateDiv)
+	});
+	// **                                                                                  **
+    // **************************************************************************************
+    // **************************************************************************************
 
 
 });

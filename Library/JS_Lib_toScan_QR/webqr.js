@@ -81,7 +81,7 @@ function initCanvas(ww,hh)
     gCanvas.height = h;
     gCtx = gCanvas.getContext("2d");
     gCtx.clearRect(0, 0, w, h);
-    imageData = gCtx.getImageData( 0,0,320,240);
+    imageData = gCtx.getImageData( 0,0,220,140);  ( 0,0,320,240);
 }
 
 function passLine(stringPixels) { 
@@ -156,7 +156,7 @@ function read(a)
     var html="<br>";
     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
         html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
-    html+="<b> QR Decoded content=><p class='qr-result'> "+htmlEntities(a)+"</p></b><br><br>";  //my change-> QR Decoded content=><p class='qr-result'>
+    html+="<b> QR Decoded content=><br><br><p class='qr-result'> "+htmlEntities(a)+"</p></b><br><br>";  //my change-> QR Decoded content=><p class='qr-result'>
     document.getElementById("result").innerHTML=html;
 }	
 
@@ -188,7 +188,7 @@ function load()
 {
 	if(isCanvasSupported() && window.File && window.FileReader)
 	{
-		initCanvas(800,100);   // 800,600 //my change
+		initCanvas(200,100);   // 800,600 //my change  
 		qrcode.callback = read;
 		document.getElementById("mainbody").style.display="inline";
 	}

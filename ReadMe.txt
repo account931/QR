@@ -10,12 +10,16 @@ the choe is the (optional) encoding.-->
 http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:3809766413-->
 
 
+//Uses Filesaver.js to save QR to local ( https://github.com/eligrey/FileSaver.js)
+//When saving QR as an image, we use a hidden canvas id="hiddenViewportCanvas" for saving QR <img> with FileSaver.js Library, because Filesaver.js can only save canvases, so we 1stly draw a received QR to this canvas
 
 ---------------------------------------------------------------------------------------------------------------------------
 
 
 
 2.How to scan/ read QR SECTION
-uses https://www.phpgang.com/how-to-decode-qr-code_344.html?doing_wp_cron=1536153588.1285529136657714843750
- 1. send ajax to ajax_php/ajax_QR_Scan_handler.php
+Previously tried gogr.me API, it worked while using <form action="http://api.qrserver.com/v1/read-qr-code/">(returning JSON), but can't use with ajax, passing an image to {http://api.qrserver.com/v1/read-qr-code/}
+Thus now it uses Library/JS_Lib_toScan_QR/webqr.js
+example at https://www.phpgang.com/how-to-decode-qr-code_344.html?doing_wp_cron=1536153588.1285529136657714843750
+ 1. 
  2.

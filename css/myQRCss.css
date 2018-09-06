@@ -3,24 +3,39 @@
   }
 
 
+/* Div for generated QR results */
+ #qrResult{
+	 margin-left:4%;
+ }
 
 
-
-/ * INJECT FROM  QR SCAN LIBRARY  */
+/*INJECT for  QR SCAN LIBRARY */
+/*canvas foe qr scan results*/
 #qr-canvas{
     display:none;
+	
+	
 }
 
+
+/* style for my created class for decoded qr text , in webqr.js*/
 .qr-result{
 	font-size:2em;
-	border:2px solid white;
-	padding: 20px;
-	margin-top:10px;
+	padding-left: 5%;
+	/* margin-top:10px;*/
+	background: grey;
+	
+	
+	
 	
 }
 
 
 
+  
+  
+  
+  
   
   
   
