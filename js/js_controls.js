@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+  
+  //some controls like clear-> hide/show are in qr_core_generated
 	
      // On CheckBox change
     // **************************************************************************************

@@ -8,6 +8,21 @@
 	 margin-left:4%;
  }
 
+ 
+ /*  ----------------Mobile */
+@media screen and (max-width: 460px) {   
+ 
+   /* to avoid overlapping screen in mobile*/
+   #qrResult{
+	 margin-left:0%;
+ }	
+}
+/* --------------END  Mobile */
+
+
+
+
+
 
 /*INJECT for  QR SCAN LIBRARY */
 /*canvas foe qr scan results*/
@@ -18,22 +33,23 @@
 }
 
 
-/* style for my created class for decoded qr text , in webqr.js*/
+/* style for my created class for decoded qr text , in webqr.js !!!!!!!!*/
 .qr-result{
 	font-size:2em;
-	padding-left: 5%;
+	padding: 10px;
 	/* margin-top:10px;*/
 	background: grey;
-	
-	
+	border-radius:12px;
 	
 	
 }
 
 
 
-  
-  
+  /* Break long words not to overlap*/
+ #qrCode, .qr-result{
+	 word-wrap: break-word;
+ } 
   
   
   

@@ -156,7 +156,7 @@ function read(a)
     var html="<br>";
     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
         html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
-    html+="<b> QR Decoded content=><br><br><p class='qr-result'> "+htmlEntities(a)+"</p></b><br><br>";  //my change-> QR Decoded content=><p class='qr-result'>
+    html+="<br><span class='scanTitle'> QR Decoded content=><span><br><br><p class='qr-result'> "+htmlEntities(a)+"</p></b><br><br>";  //my change-> QR Decoded content=><p class='qr-result'>
     document.getElementById("result").innerHTML=html;
 }	
 
@@ -246,8 +246,8 @@ function setimg()
     if(stype==2)
         return;
     document.getElementById("outdiv").innerHTML = imghtml;
-    document.getElementById("qrimg").src="qrimg.png";
-    document.getElementById("webcamimg").src="webcam2.png";
+    //document.getElementById("qrimg").src="qrimg.png";  //to turn off console error, as we don't have those images
+    //document.getElementById("webcamimg").src="webcam2.png";   //to turn off console error, as we don't have those images
     var qrfile = document.getElementById("qrfile");
     qrfile.addEventListener("dragenter", dragenter, false);  
     qrfile.addEventListener("dragover", dragover, false);  

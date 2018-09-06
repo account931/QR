@@ -11,7 +11,9 @@ http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=sms:3809766413-->
 
 
 //Uses Filesaver.js to save QR to local ( https://github.com/eligrey/FileSaver.js)
-//When saving QR as an image, we use a hidden canvas id="hiddenViewportCanvas" for saving QR <img> with FileSaver.js Library, because Filesaver.js can only save canvases, so we 1stly draw a received QR to this canvas
+//When saving QR as an image, we use a canvas id="hiddenViewportCanvas" for saving QR <img> with FileSaver.js Library, 
+  because Filesaver.js can only save visible canvases, so we 1stly draw a received QR to this canvas and then hide it with js {cnvs.style.display="none";}
+
 
 ---------------------------------------------------------------------------------------------------------------------------
 

@@ -62,7 +62,7 @@
 			         <!---- END CHECKBOX to change generate/scan-->
 					 
 			  
-			         <!-------------- GENERATE Form Start------------->	
+			         <!-------------- GENERATE qr Form Start------------->	
 			         <!-- Each div should have id = checkboxID + "Div",  to automate it in js_controls.js -->
 		             <div class="col-sm-4 col-xs-12 my-background coreDivs-toHide" style="background-color:lavender;" id="qrGenerateDiv" >
 		                 <!-------------- GENERATE Form Start------------->	
@@ -114,10 +114,7 @@
 				 
 				 
 				 
-				   <!-- This is a hidden canvas-->
-				   <!--used for saving QR <img> with FileSaver.js because Filesaver.js can only save canvases, so we 1stly draw a received QR to this canvas-->
-				   <canvas id="viewport" width="600" height="297" style="display:none;"></canvas>
-				   <!-- End  a hidden canvas-->
+				  
 				   
 				   
 			       <!--------- QR Scan Form Was cut here ------->
@@ -158,7 +155,10 @@
                 
 
 
-    	
+    	           <!-- This is a auto hidden canvas, used for saveing qr image to JPEG-->
+				   <!--used for saving QR <img> with FileSaver.js because Filesaver.js can only save visible canvases, so we 1stly draw a received QR to this canvas and then hide it with js {cnvs.style.display="none";}-->
+				   <canvas id="hiddenViewportCanvas" width="300" height="400" style=""></canvas>
+				   <!-- End  a hidden canvas-->
     	
 		
 		
