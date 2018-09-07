@@ -240,8 +240,7 @@ function(){ //hover off
 	$(document).on("click", '#downloadLnk', function() {   // this  click  is  used  to   react  to  newly generated cicles;
 	   if (confirm("Sure to download the image?\n Please notice, it may not work in some browsers, in this case use right-click save.")) {
 		   
-		   //to save image, first we have to convert it to canvas and then we can save it with FileSaver.js
-		   
+		   //to save image, first we have to convert it to canvas and then we can save it with FileSaver.js 
 		   
 		   var cnvs = document.getElementById('hiddenViewportCanvas'); //gets hidden canvas
            var ctx = cnvs.getContext('2d');
@@ -256,14 +255,18 @@ function(){ //hover off
 		   //draw qr <img> to canvas
             ctx.drawImage(mirror,2,2); //ctx.drawImage(myImage, margin-left,margin-top)
 
-
-           // Use FileSaver.js
-           cnvs.toBlob(function(blob) {
-               saveAs(blob, "myBarCode.jpeg");
-           });
+            try{  //use try catch to show alert, when download is not working in samsung browser
+               // Use FileSaver.js
+               cnvs.toBlob(function(blob) {
+                   saveAs(blob, "myBarCode.jpeg");
+               });
 		   
-		   //hide  #hiddenViewportCanvas from view, as if set hidden from beginning, u won't be able to save img from it
-	       cnvs.style.display="none";
+		       //hide  #hiddenViewportCanvas from view, as if set hidden from beginning, u won't be able to save img from it
+	           cnvs.style.display="none";
+			} catch(ee) {
+				alert("Browser is not supported, use right-click save.");
+				cnvs.style.display="none";
+			}
 	   } 
 	   
 	   
