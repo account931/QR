@@ -15,6 +15,7 @@
 	  
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 
 
       <link rel="stylesheet" type="text/css" media="all" href="css/myQRCss.css">
       <script src="js/qr_core_generate.js"></script><!--  Core QR create JS-->
@@ -24,6 +25,8 @@
 	  
 	  <script type="text/javascript" src="Library/JS_Lib_toScan_QR/webqr.js"></script>    <!--   QR read/scan Library--> <!-- Injected for Scan/Read-->
 	  <script type="text/javascript" src="Library/JS_Lib_toScan_QR/llqrcode.js"></script> <!--   QR read/scan Library--> <!-- Injected for Scan/Read-->
+	  
+	  <script src="js/changeStyleTheme.js"></script> <!-- change wallpapers,changeStyleTheme JS-->
 	  
 	  
 	  
@@ -38,7 +41,7 @@
 
      <body  onload="load(); setimg();">  <!-- Injected for Scan/Read-->
 
-       <div id="headX" class="jumbotron text-center gradient alert-success my-background" style =' background-color:lavender ;'> <!--#2ba6cb;-->
+       <div id="headX" class="jumbotron text-center gradient alert-success my-background head-style" style =' background-color:lavender ;'> <!--#2ba6cb;-->
          <h1 id="h1Text"> <span id="textChange"> QR Codes on-line</span> <span class="glyphicon glyphicon-paste"><!--</span> <img src="http://78.media.tumblr.com/tumblr_m2hq5tt3ma1qav3uso1_400.gif" style="width:3%"/>--> </h1> 
 		   
            <!--<p class="header_p">QR Codes on-line processor   <span class="glyphicon glyphicon-duplicate"></span>-->    <!--generates random lists, ramdomizes integers, etc-->
@@ -55,7 +58,7 @@
 		         <div class="row row1">
 			 
 			         <!-------CHECKBOX to change generate/scan--><!-- Checkbox ID will be used in js_controls.js to form div ids (qrGenerateDiv,etc) -->
-			         <div class=" col-sm-12 col-xs-12 my-background checkbox"> <!-- Checkbox ID will be used in JS to form div ids (randListDiv,etc) -->
+			         <div class=" col-sm-12 col-xs-12 my-background checkbox head-style"> <!-- Checkbox ID will be used in JS to form div ids (randListDiv,etc) -->
                           <label><input type="checkbox" value="" name="r" id="qrGenerate" checked >Generate QR<!--Random list--></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			             <label><input type="checkbox" value="" name="r" id="qrScan">Scan QR<!--Random int--></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      </div>
@@ -64,7 +67,7 @@
 			  
 			         <!-------------- GENERATE qr Form Start------------->	
 			         <!-- Each div should have id = checkboxID + "Div",  to automate it in js_controls.js -->
-		             <div class="col-sm-4 col-xs-12 my-background coreDivs-toHide" style="background-color:lavender;" id="qrGenerateDiv" >
+		             <div class="col-sm-4 col-xs-12 my-background coreDivs-toHide head-style" style="background-color:lavender;" id="qrGenerateDiv" >
 		                 <!-------------- GENERATE Form Start------------->	
                          <form action="" id="myFormZ" method="post">
                              <div class="form-group">
@@ -127,14 +130,14 @@
 				
 				  <!-------------------------------------------------- Injected DIV for Scan/Read----------------------------------------------->
 				  <br>
-				  <div class="row coreDivs-toHide" id="qrScanDiv" style="display:none;" >
+				  <div class="row coreDivs-toHide head-style" id="qrScanDiv" style="display:none;" >
 				      <div class="col-sm-4 col-xs-12 " id="qrscanner">
 				 
 				          <!----Provided by library-->
 				          <div id="main">
                                <div id="mainbody">
                                     <div id="outdiv"></div>
-                                    <div id="result" class="my-background"></div>
+                                    <div id="result" class="my-background head-style"></div>
                                </div>
 						  </div>         
                           <canvas id="qr-canvas" width="" height="10px;"></canvas> <!--Canvas to draw image -->
@@ -162,6 +165,15 @@
     	
 		
 		
+		
+			      <!-----------------  Button to change Style theme------------------------->
+	              <input type="button" class="btn" value=">>" id="changeStyle" style="position:absolute;top:0px;left:0px;" title="click to change theme"/>
+	              <!-----------------  Button to change Style theme------------------------->
+				  
+				  
+				  
+				  
+				  
 		
 		          <!------------- Footer ------------->
 				  <div class="footer navbar-fixed-bottom"> <!--navbar-fixed-bottom  fixxes bootom problem-->
