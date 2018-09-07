@@ -20,7 +20,7 @@
       <script src="js/qr_core_generate.js"></script><!--  Core QR create JS-->
 	  <script src="js/qr_scanner.js"></script><!--  Core QR read/scan JS --- NOT USED- SO FAR IT IS NOT USED AT ALL-> it is delegated to Library/JS_Lib_toScan_QR--> 
 	  <script src="js/js_controls.js"></script><!-- js_controlsn (hides/show el)--> 
-	  <script src="library/FileSaver_libary/FileSaver.js"></script><!-- JS FileSaver library--> <!-- https://github.com/eligrey/FileSaver.js-->
+	  <script src="Library/FileSaver_libary/FileSaver.js"></script><!-- JS FileSaver library--> <!-- https://github.com/eligrey/FileSaver.js-->
 	  
 	  <script type="text/javascript" src="Library/JS_Lib_toScan_QR/webqr.js"></script>    <!--   QR read/scan Library--> <!-- Injected for Scan/Read-->
 	  <script type="text/javascript" src="Library/JS_Lib_toScan_QR/llqrcode.js"></script> <!--   QR read/scan Library--> <!-- Injected for Scan/Read-->
